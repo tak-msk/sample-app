@@ -14,6 +14,10 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'capybara'
+require 'capybara/rspec'
+require 'capybara/dsl'
+
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -75,4 +79,12 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+
+  config.include Capybara::DSL
+end
+
+Capybara.configure do |config|
+    config.run_server = false
+    config.default_driver = :selenium
+    config.app_host = 'http://0.0.0.0:3000'
 end
