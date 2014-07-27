@@ -18,7 +18,12 @@ require 'capybara'
 require 'capybara/rspec'
 require 'capybara/dsl'
 
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__) 
+require 'rspec/rails'
+
 RSpec.configure do |config|
+    config.include Rails.application.routes.url_helpers
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
