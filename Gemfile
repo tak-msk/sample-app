@@ -6,6 +6,7 @@ gem 'rails', '4.1.4'
 
 gem 'bootstrap-sass'
 gem 'sprockets'
+gem 'bcrypt'
 
 group :assets do
     gem 'compass-rails'
@@ -20,6 +21,10 @@ end
 group :test do
     gem 'selenium-webdriver'
     gem 'capybara','2.4.0'
+end
+
+group :develpment, :test do
+    gem 'database_cleaner'
 end
 
 group :production do

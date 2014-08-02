@@ -17,6 +17,7 @@
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require 'database_cleaner'
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__) 
@@ -86,6 +87,18 @@ RSpec.configure do |config|
 =end
 
   config.include Capybara::DSL
+
+  config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+      DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+      DatabaseCleaner.clean
+  end
 end
 
 Capybara.configure do |config|
